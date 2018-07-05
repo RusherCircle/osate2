@@ -317,7 +317,7 @@ class ClassifierOperationPartEditor extends Composite {
 		return currentValue.toConfiguredOperation();
 	}
 
-	public void setData(final String id) {
+	public void setTestingFieldId(final String id) {
 		identifierField.setData(UiUtil.AUTOMATED_SWTBOT_TESTING_KEY, id);
 	}
 }

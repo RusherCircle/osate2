@@ -529,7 +529,23 @@ public class AgeGefBot {
 	}
 
 	public void setTextWithId(final String id, final String text) {
-		bot.textWithId(id).setText(text);
+		// TODO:REMOVE
+		// ADDED FOR DEBUGGING
+		try {
+			bot.textWithId(id).setText(text);
+		} catch(WidgetNotFoundException e) {
+			// TODO: Cleanup and make into a shared function?
+			// TODO: Shouldn't be just for text widgets too..
+			final StringBuilder sb = new StringBuilder();
+			sb.append("Unable to find text widget with id: " + id);
+			sb.append(System.lineSeparator());
+			for (final Widget w : bot.widgets(org.hamcrest.Matchers.any(Widget.class))) {
+				sb.append("Found: " + w);
+				sb.append(System.lineSeparator());
+			}
+
+			throw new RuntimeException(sb.toString(), e);
+		}
 	}
 
 	public void maximize() {

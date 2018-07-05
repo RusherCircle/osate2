@@ -200,7 +200,7 @@ public class ClassifierOperationDialog {
 					return args.model.getUnfilteredPrimarySelectOptions();
 				}
 			});
-			primaryPartEditor.setData(primaryPartIdentifier);
+			primaryPartEditor.setTestingFieldId(primaryPartIdentifier);
 			primaryPartEditor.setSelectedElement(args.defaultSelection);
 			primaryPartEditor.setSelectedPackage(args.defaultPackage);
 			primaryPartEditor.setLayoutData(GridDataFactory.fillDefaults().span(2, 1).grab(true, false).create());
@@ -240,7 +240,7 @@ public class ClassifierOperationDialog {
 							primaryPartEditor.getConfiguredOperation().getType());
 				}
 			});
-			baseValueWidget.setData(baseValueIdentifier);
+			baseValueWidget.setTestingFieldId(baseValueIdentifier);
 			baseValueWidget.setSelectedElement(args.defaultSelection);
 			baseValueWidget.setSelectedPackage(args.defaultPackage);
 			baseValueWidget.setLayoutData(GridDataFactory.fillDefaults().grab(true, false).create());
