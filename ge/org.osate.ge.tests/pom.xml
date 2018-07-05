@@ -90,19 +90,9 @@
 						<artifactId>tycho-surefire-plugin</artifactId>
 						<version>${tycho.version}</version>
 						<configuration>
-							<product>osate2</product>
+							<argLine>${tycho.testArgLine} ${ui.test.vmargs} ${test.logging}</argLine>
 							<useUIHarness>true</useUIHarness>
 							<useUIThread>false</useUIThread>
-							<dependencies>
-								<dependency>
-									<type>p2-installable-unit</type>
-									<artifactId>org.eclipse.sdk.feature.group</artifactId>
-								</dependency>
-							</dependencies>
-							<includes>
-								<include>**/AllTests.java</include>
-							</includes>
-							<jgit.dirtyWorkingTree>${jgit.dirtyWorkingTree}</jgit.dirtyWorkingTree>
 						</configuration>
 					</plugin>
 				</plugins>
