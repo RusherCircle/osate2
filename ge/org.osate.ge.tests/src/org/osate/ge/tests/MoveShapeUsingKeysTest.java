@@ -41,7 +41,6 @@ public class MoveShapeUsingKeysTest {
 		final GraphitiShapeEditPart gsep = (GraphitiShapeEditPart)editor.getSWTBotGefViewer().getEditPart(ElementNames.abstractTypeName).part();
 		final PictogramElement pe = gsep.getPictogramElement();
 		final GraphicsAlgorithm gaBefore = pe.getGraphicsAlgorithm();
-		final int beforeX = gaBefore.getX();
 		final int beforeY = gaBefore.getY();
 		editor.getSWTBotGefViewer().select(ElementNames.abstractTypeName);
 
@@ -49,17 +48,18 @@ public class MoveShapeUsingKeysTest {
 		bot.keyPress(KeyEvent.VK_PERIOD);
 
 		// Move shape down
-		for (int i = 0; i < 10; i++) {
-			bot.keyPress(KeyEvent.VK_DOWN);
-			bot.keyRelease(KeyEvent.VK_DOWN);
-		}
+		// bot.keyPress(KeyEvent.VK_DOWN);
+		// bot.keyRelease(KeyEvent.VK_DOWN);
 
 		// Stop move shape mode
 		bot.keyRelease(KeyEvent.VK_PERIOD);
+
 		bot.keyPress(KeyEvent.VK_ENTER);
 		bot.keyRelease(KeyEvent.VK_ENTER);
 
+		bot.sleep(2);
+
 		final GraphicsAlgorithm gaAfter = pe.getGraphicsAlgorithm();
-		assertTrue(beforeX != gaAfter.getX() || beforeY != gaAfter.getY());
+		assertTrue("Position is unchanged", beforeY != gaAfter.getY());
 	}
 }
