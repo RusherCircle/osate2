@@ -41,6 +41,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -540,7 +542,8 @@ public class AgeGefBot {
 			sb.append("Unable to find text widget with id: " + id);
 			sb.append(System.lineSeparator());
 			for (final Widget w : bot.widgets(org.hamcrest.Matchers.any(Widget.class))) {
-				sb.append("Found: " + w);
+				final String widgetStr = UIThreadRunnable.syncExec((Result<String>) () -> w.toString());
+				sb.append("Found: " + widgetStr);
 				sb.append(System.lineSeparator());
 			}
 
