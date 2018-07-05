@@ -48,8 +48,8 @@ public class MoveShapeUsingKeysTest {
 		bot.keyPress(KeyEvent.VK_PERIOD);
 
 		// Move shape down
-		// bot.keyPress(KeyEvent.VK_DOWN);
-		// bot.keyRelease(KeyEvent.VK_DOWN);
+		bot.keyPress(KeyEvent.VK_DOWN);
+		bot.keyRelease(KeyEvent.VK_DOWN);
 
 		// Stop move shape mode
 		bot.keyRelease(KeyEvent.VK_PERIOD);
