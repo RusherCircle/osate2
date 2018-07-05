@@ -249,7 +249,7 @@ public class AgeGefBot {
 			final String elementName, final Point point, final String... parentName) {
 		editor.setFocus();
 		createToolItem(editor, toolType, point, parentName);
-		waitUntilShellIsActive("Create Component Implementation");
+		activateShell("Create Component Implementation");
 		bot.shell("Create Component Implementation").setFocus();
 		setText(elementName);
 		clickRadio("Existing");
@@ -277,8 +277,9 @@ public class AgeGefBot {
 		bot.tree().contextMenu("Open Diagram").click();
 	}
 
-	public void waitUntilShellIsActive(final String shellTitle) {
-		bot.waitUntil(org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive(shellTitle));
+	public void activateShell(final String shellTitle) {
+		final SWTBotShell shell = bot.shell(shellTitle);
+		shell.activate();
 	}
 
 	public SWTBotShell getActiveShell() {
@@ -934,7 +935,8 @@ public class AgeGefBot {
 	public void createTypeAndImplementation(final SWTBotGefEditor editor, final Point point, final String implName,
 			final String typeName, final String impl, final String packageName) {
 		createToolItem(editor, impl, point, packageName);
-		waitUntilShellIsActive("Create Component Implementation");
+		activateShell("Create Component Implementation");
+
 		setTextWithId(ClassifierOperationDialog.primaryPartIdentifier, implName);
 		clickRadio("New Component Type");
 		setTextWithId(ClassifierOperationDialog.baseValueIdentifier, typeName);
