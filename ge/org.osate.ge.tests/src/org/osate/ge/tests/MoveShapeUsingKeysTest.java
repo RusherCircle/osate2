@@ -57,7 +57,7 @@ public class MoveShapeUsingKeysTest {
 		bot.keyPress(KeyEvent.VK_ENTER);
 		bot.keyRelease(KeyEvent.VK_ENTER);
 
-		bot.sleep(2);
+		bot.sleep(5);
 
 		final GraphicsAlgorithm gaAfter = pe.getGraphicsAlgorithm();
 		assertTrue("Position is unchanged", beforeY != gaAfter.getY());

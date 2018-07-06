@@ -278,8 +278,32 @@ public class AgeGefBot {
 	}
 
 	public void activateShell(final String shellTitle) {
+		// TODO: Remove this
+		Display.getDefault().syncExec(() -> {
+			System.err.println("PRE-ACTIVATE SHELLS");
+			for (final SWTBotShell test : bot.shells()) {
+				System.err.println("BEFORE: " + test.getId() + " : " + test.getText());
+			}
+		});
+
+
 		final SWTBotShell shell = bot.shell(shellTitle);
-		shell.activate();
+		try {
+			shell.activate();
+		} catch (WidgetNotFoundException e) {
+			// TODO: Cleanup
+			final StringBuilder sb = new StringBuilder();
+			sb.append("Unable to activate shell with title: " + shellTitle);
+			sb.append(System.lineSeparator());
+			for (final SWTBotShell tmpShell : bot.shells()) {
+				final String shellStr = UIThreadRunnable
+						.syncExec((Result<String>) () -> tmpShell.getId() + " : " + tmpShell.getText());
+				sb.append("Found: " + shellStr);
+				sb.append(System.lineSeparator());
+			}
+
+			throw new RuntimeException(sb.toString(), e);
+		}
 	}
 
 	public SWTBotShell getActiveShell() {
