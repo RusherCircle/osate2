@@ -78,7 +78,7 @@ public class CreateFlowImplTest {
 
 		bot.createImplementation(editor, StringUtil.camelCaseToUser(SystemImplementation.class.getSimpleName()), "sys",
 				"impl",
-				new Point(500, 500), ElementNames.packageName);
+				new Point(1, 1), ElementNames.packageName);
 
 		bot.openAssociatedDiagramFromContextMenu(editor, "sys.impl2");
 		final AgeSWTBotGefEditor implEditor = bot.getEditor(ElementNames.packageName + "_sys_impl2");

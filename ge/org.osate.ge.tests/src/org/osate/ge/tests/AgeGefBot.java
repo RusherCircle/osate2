@@ -287,8 +287,8 @@ public class AgeGefBot {
 		});
 
 
-		final SWTBotShell shell = bot.shell(shellTitle);
 		try {
+			final SWTBotShell shell = bot.shell(shellTitle);
 			shell.activate();
 		} catch (WidgetNotFoundException e) {
 			// TODO: Cleanup
